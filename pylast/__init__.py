@@ -1991,11 +1991,12 @@ class Tag(_BaseObject, _Chartable):
 
         return self.name
 
-    def get_top_albums(self, limit=None, cacheable=True):
+    def get_top_albums(self, limit=None, cacheable=True, page=1):
         """Returns a list of the top albums."""
         params = self._get_params()
         if limit:
             params["limit"] = limit
+        params["page"] = page
 
         doc = self._request(self.ws_prefix + ".getTopAlbums", cacheable, params)
 
